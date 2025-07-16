@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+*/migrations/__pycache__/
+*/__pycache__/
+
+.venv/
+.pycodestyle
+check_pep8.ps1

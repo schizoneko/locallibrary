@@ -3,10 +3,7 @@ from .models import Author, Genre, Book, BookInstance
 
 # Register your models here.
 
-# admin.site.register(Book)
-# admin.site.register(Author)
 admin.site.register(Genre)
-# admin.site.register(BookInstance)
 
 # Define the admin class
 class AuthorAdmin(admin.ModelAdmin):
@@ -31,10 +28,6 @@ class BookInstanceAdmin(admin.ModelAdmin):
     list_filter = ("status", "due_back")
 
     fieldsets = (
-        (None, {
-            "fields": ("book", "imprint", "id")
-        }),
-        ("Availability", {
-            "fields": ("status", "due_back")
-        }),
+        (None, {"fields": ("book", "imprint", "id")}),
+        ("Availability", {"fields": ("status", "due_back")}),
     )

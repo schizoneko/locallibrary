@@ -40,7 +40,9 @@ class Book(models.Model):
         'ISBN', 
         max_length=MAX_LENGTH_ISBN, 
         unique=True,
-        help_text=gettext('13 Character <ahref="https://www.isbn-international.org/content/what-isbn">ISBN number</a>'),
+        help_text=gettext(
+            '13 Character <ahref="https://www.isbn-international.org/content/what-isbn">ISBN number</a>'
+        ),
     )
     
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')

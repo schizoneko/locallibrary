@@ -15,9 +15,9 @@
         {% for copy in book_instances %}
             <hr>
             <p class="
-            {% if copy.status == LoanStatus.AVAILABLE.value %}
+            {% if copy.status == LOAN_STATUS.AVAILABLE.value %}
                 text-success
-            {% elif copy.status == LoanStatus.MAINTENANCE.value %}
+            {% elif copy.status == LOAN_STATUS.MAINTENANCE.value %}
                 text-danger
             {% else %}
                 text-warning
@@ -25,7 +25,7 @@
             ">
             {{ copy.get_status_display }}
             </p>
-            {% if copy.status != LoanStatus.AVAILABLE.value %}
+            {% if copy.status != LOAN_STATUS.AVAILABLE.value %}
             <p><strong>{% trans "Due to be returned" %}:</strong> {{ copy.due_back }}</p>
             {% endif %}
             <p><strong>{% trans "Imprint" %}:</strong> {{ copy.imprint }}</p>

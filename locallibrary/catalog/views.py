@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.shortcuts import get_object_or_404
 from .models import Book, Author, BookInstance, Genre
-from .constants import LOAN_STATUS, NUM_BOOK_VIEW
+from .constants import LOAN_STATUS, NUM_BOOK_VIEW, NUM_VISITS
 
 # Create your views here.
 
@@ -21,12 +21,15 @@ def index(request):
     
     # The 'all()' is implied by default.
     num_authors = Author.objects.count()
+    num_visits = request.session.get('num_visits', NUM_VISITS)
+    request.session['num_visits'] = num_visits + NUM_VISITS
     
     context = {
         'num_books': num_books,
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
         'num_authors': num_authors,
+        'num_visits': num_visits
     }
     
     # Render the HTML template index.html with the data in the context variable
@@ -58,3 +61,4 @@ class BookDetailView(generic.DetailView):
         book = get_object_or_404(Book, pk=primary_key)
 
         return render(request, "catalog/book_detail.html", context={"book": book})
+    
